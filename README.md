@@ -42,7 +42,7 @@ This pipeline uses both Python and R. Recommended setup:
 ```txt
 seal_ice/
 ├── data/
-│   └── survey_date/
+│   └── {survey_date}/
 │       ├── created_data/
 │       │   ├── edge_pngs_n_pgws/          # PNG edge images and associated PGW world files
 │       │   ├── filled_tiffs/              # Flood-filled TIFFs of full iceberg areas
