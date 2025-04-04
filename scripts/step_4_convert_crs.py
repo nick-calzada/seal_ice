@@ -6,8 +6,8 @@ from glob import glob
 import argparse
 
 '''
-Script to reproject PNG images (using associated .PGW files) from EPSG:3338 to EPSG:4326, and save the result as a GeoTIFF. This script was used within
-the QGIS python console.
+Script to reproject PNG images (using associated .PGW files) from EPSG:3338 to EPSG:4326, and save the result as a GeoTIFF. This script was used in
+the QGIS python console. See https://qgis.org/download/ for download information. 
 
 Details about QGIS version used, and other dependencies used at the time of using script:
 
