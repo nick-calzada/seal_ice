@@ -88,7 +88,7 @@ Recommended order of operations:
    Use `step_2_3.py`.
 
 3. **Reproject the images using QGIS.**  
-   (Or use `step_4_convert_crs.py` if you're scripting this.)
+   (See `step_4_convert_crs.py` for QGIS version details and reprojection instructions.)
 
 4. **Fill iceberg outlines and calculate ice proportions.**  
    Use `step_5_6.py` to generate filled rasters and grid-level proportion data.
@@ -100,7 +100,7 @@ Each step saves intermediate outputs that can be reused for validation or inspec
 
 ## Input Requirements
 - Aerial `.jpg` images
-- Corresponding `.jgw` world files with correct CRS
+- Corresponding `.jgw` world files (NAD 83 / Alaska Albers - EPSG:3338)
 - Grid cell shapefiles
 - Optional date-specific survey boundary shapefile
 
