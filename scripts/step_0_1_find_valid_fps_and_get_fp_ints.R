@@ -27,8 +27,8 @@ if (any(is.na(surveys))) {
 
 # Function to find npz files for which there are valid binary npz files for
 find_valid_footprints <- function(rep_year) {
-  npz_files <- here('data', rep_year, 'original_data', 'npzs')
-  txt_file_name <- here('data', rep_year, 'created_data', 'valid_footprints.txt')
+  npz_files <- here('data', rep_year, 'raw', 'npzs')
+  txt_file_name <- here('data', rep_year, 'created', 'valid_footprints.txt')
   fileConn <- file(txt_file_name, "w")
   writeLines("files", fileConn)
   files <- list.files(npz_files)
@@ -68,7 +68,7 @@ for (s in surveys) {
   # Filter for valid footprints
   print('Filtering for valid footprints ...')
   # path <- here(glue('data/{s}/created_data/valid_footprints.txt'))
-  path <- here('data', as.character(s), 'created_data', 'valid_footprints.txt')
+  path <- here('data', as.character(s), 'created', 'valid_footprints.txt')
   desired_files <- read_csv(path, show_col_types = FALSE)
   filtered.footprint <- footprint %>% filter(FileName %in% desired_files$files)
   footprint <- filtered.footprint
