@@ -43,12 +43,12 @@ This pipeline uses both Python and R. Recommended setup:
 seal_ice/
 ├── data/
 │   └── {survey_date}/
-│       ├── created_data/
+│       ├── created/
 │       │   ├── edge_pngs_n_pgws/          # PNG edge images and associated PGW world files
 │       │   ├── filled_tiffs/              # Flood-filled TIFFs of full iceberg areas
 │       │   ├── wgs84_tiffs_from_pngs/     # CRS-transformed TIFFs (e.g., EPSG:4326)
 │       │   └── valid_footprints.txt       # List of valid footprints used for analysis
-│       └── original_data/
+│       └── raw/
 │           ├── edge_jpgs_n_jgws/          # Original JPG edge images and JGW world files
 │           ├── jgws/                      # Raw .jgw files
 │           └── npzs/                      # Numpy .npz iceberg data arrays
