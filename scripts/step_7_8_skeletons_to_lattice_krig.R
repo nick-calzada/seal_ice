@@ -5,15 +5,11 @@ library(tidyverse)
 library(glue)
 library(raster)
 library(sf)
+
 ################################################################################
 # Using observed ice proportions and LatticeKrig(), create a smooth ice proportion
 # map across the JHI domain for a specific replicate date
 ################################################################################
-
-# 03/04 - most recent attempt is with covariates (glacier distance which depends on survey date, and bathymetry)
-
-# Since we now only want to use one survey bonday (20070618), perform all of those
-# steps before the loop, as doing so inside is redundant 
 
 # Read in survey polygon for specified replicate date
 path <- here("harbor_seal_many_replicates", "survey_polygons")
@@ -114,18 +110,11 @@ for (replicate_date in replicates) {
   # write_csv(df, file = file_name)
   
   ###########################################################################
-  # 2. Perform LatticeKrig() interpolation
+  # 2. Perform LatticeKrig() interpolation. 
+  # See https://cran.r-project.org/web/packages/LatticeKrig/index.html for more information.
   ###########################################################################
   
-  # replicate_date <- 20070621
-  # glac.dist.name <- glue('covs/glacier_dist_{replicate_date}.tiff')
-  # glac.dist.rast <- raster(glac.dist.name)
-  # glac.dist.rast <- raster('covs/glacier_dist_20070619.tiff')
-  
   print(glue('Beginning {replicate_date} survey ...'))
-  # file_name <- glue('ice_prop_skeletons/ice_props_{replicate_date}.csv')
-  # file_name <- 'final_ice_props_w_one_sb/march_10_20070618_test.csv'
-  # df <- read_csv(file_name, show_col_types = FALSE) %>% as.data.frame()
   
   # Construct design matrix
   print('Constructing design matrix ...')
@@ -133,8 +122,6 @@ for (replicate_date in replicates) {
   X.full <- data.frame(x = df[, 'x'],
                        y = df[, 'y'], 
                        z = df[, 'z']
-                       # glac_dist = scale(raster::extract(x = glac.dist.rast, y = df[,c('x', 'y')])),
-                       # bath = scale(raster::extract(x = bath.rast, df[,c('x', 'y')]))
                        )
   
   # Gather observed proportions and locations
@@ -145,11 +132,10 @@ for (replicate_date in replicates) {
   
   # Fit LK model with no covariates
   print('Fitting LatticeKrig model ...')
-  iceFit <- LatticeKrig(locations, observations) # Unspecified, "black box" version
+  iceFit <- LatticeKrig(locations, observations) 
   
   # Predict at unobserved locations
   print('Predicting ice proportions at unobserved locations ...')
-  # cov.mat <- X.unobs[, c('glac_dist', 'bath')] %>% as.matrix()
   gHat <- predict(iceFit, X.unobs[, c('x', 'y')]) # w covs
   
   # Join fitted values at observed locations with predicted values
@@ -162,7 +148,7 @@ for (replicate_date in replicates) {
   joined <- joined %>%
     mutate(clipped_z = pmin(pmax(z, 0), 1))
   
-  print(range(joined$clipped_z))
+  print(range(joined$clipped_z)) # --> [0,1]
   
   # Optional: visualize final ice proportion map
   # p <-
