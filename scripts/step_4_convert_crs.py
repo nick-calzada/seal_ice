@@ -46,8 +46,8 @@ def reproject_pngs_write_tiffs(dates):
     for d in dates:
         
         # Adjust source and destination directories based on specific directory hierarchy. 
-        source_dir = os.path.join('Users', 'nickcalzada', 'seal', 'data', d, 'created_data', 'edge_pngs_n_pgws')
-        dest_dir = os.path.join('Users', 'nickcalzada', 'seal', 'data', d, 'created_data','wgs_84_tifs_from_pngs')
+        source_dir = os.path.join('Users', 'nickcalzada', 'seal', 'data', d, 'created', 'edge_pngs_n_pgws')
+        dest_dir = os.path.join('Users', 'nickcalzada', 'seal', 'data', d, 'created','wgs_84_tifs_from_pngs')
  
 
         if not os.path.exists(dest_dir):
