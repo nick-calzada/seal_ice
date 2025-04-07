@@ -5,37 +5,37 @@ from qgis.core import QgsRasterLayer, QgsCoordinateReferenceSystem, QgsProject
 from glob import glob
 import argparse
 
-'''
-Script to reproject PNG images (using associated .PGW files) from EPSG:3338 to EPSG:4326, and save the result as a GeoTIFF. This script was used in
-the QGIS python console. See https://qgis.org/download/ for download information. 
-
-Details about QGIS version used, and other dependencies used at the time of using script:
-
-QGIS version - 3.34.12-Prizren
-QGIS code revision - 67283536f09
-Qt version - 5.15.2
-Python version - 3.9.5
-GDAL/OGR version - 3.3.2
-PROJ version - 8.1.1
-EPSG Registry database version - v10.028 (2021-07-07)
-GEOS version - 3.9.1-CAPI-1.14.2
-SQLite version - 3.35.2
-PDAL version - 2.3.0
-PostgreSQL client version - unknown
-SpatiaLite version - 5.0.1
-QWT version - 6.1.6
-QScintilla2 version - 2.11.5
-OS version - macOS 14.6
-
-Active Python plugins: 
-processing - 2.12.99
-grassprovider - 2.12.99
-db_manager - 0.1.20
-MetaSearch - 0.3.6
-
-'''
-
 def reproject_pngs_write_tiffs(dates):
+
+    '''
+    Script to reproject PNG images (using associated .PGW files) from EPSG:3338 to EPSG:4326, and save the result as a GeoTIFF. This script was used in
+    the QGIS python console. See https://qgis.org/download/ for download information. 
+    
+    Details about QGIS version used, and other dependencies used at the time of using script:
+    
+    QGIS version - 3.34.12-Prizren
+    QGIS code revision - 67283536f09
+    Qt version - 5.15.2
+    Python version - 3.9.5
+    GDAL/OGR version - 3.3.2
+    PROJ version - 8.1.1
+    EPSG Registry database version - v10.028 (2021-07-07)
+    GEOS version - 3.9.1-CAPI-1.14.2
+    SQLite version - 3.35.2
+    PDAL version - 2.3.0
+    PostgreSQL client version - unknown
+    SpatiaLite version - 5.0.1
+    QWT version - 6.1.6
+    QScintilla2 version - 2.11.5
+    OS version - macOS 14.6
+    
+    Active Python plugins: 
+    processing - 2.12.99
+    grassprovider - 2.12.99
+    db_manager - 0.1.20
+    MetaSearch - 0.3.6
+    
+    '''
 
     if isinstance(dates, str):  # If accidentally passed a string, wrap in a list
         dates = [dates]
