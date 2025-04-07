@@ -16,9 +16,9 @@ if __name__ == '__main__':
 
         # 1. Fill in and write tiffs 
         print(f'\nFilling in icebergs for survey date {d}...\n')
-        edge_tiff_path = os.path.join('/Users/nickcalzada/seal/data', str(d), 'created_data', 'wgs_84_edge_tifs_from_pngs')
+        edge_tiff_path = os.path.join('/Users/nickcalzada/seal/data', str(d), 'created', 'wgs_84_edge_tifs_from_pngs')
         edge_tifs = glob(os.path.join(edge_tiff_path, '*.tif'))
-        output_dir = os.path.join('/Users/nickcalzada/seal/data', str(d), 'created_data', 'filled_tiffs')
+        output_dir = os.path.join('/Users/nickcalzada/seal/data', str(d), 'created', 'filled_tiffs')
         for edge_tif in tqdm(edge_tifs):
             fill_and_write_tiff(edge_tiff_path=edge_tif, output_dir=output_dir)
             # fill_and_write_tiff(edge_tiff_path=edge_tiff_path, output_dir=output_dir)
