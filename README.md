@@ -49,7 +49,6 @@ seal_ice/
 │       │   ├── wgs84_tiffs_from_pngs/     # CRS-transformed TIFFs (e.g., EPSG:4326)
 │       │   └── valid_footprints.txt       # List of valid footprints used for analysis
 │       └── raw/
-│           ├── edge_jpgs_n_jgws/          # Original JPG edge images and JGW world files
 │           ├── jgws/                      # Raw .jgw files
 │           └── npzs/                      # Numpy .npz iceberg data arrays
 │
