@@ -1,8 +1,9 @@
 
 ################################################################################
-# Step 0: Gather coordinates and shapes of grid cells for finding ice proportions
-# later in the pipeline. Recommend to run this first in the background for replicate
-# date(s) of interest.
+# Step 0: Find valid (nonempty) footprints.
+# Step 1: Gather coordinates and shapes of grid cells for finding ice proportions
+# later in the pipeline. 
+# Recommend to run this first in the background for replicate date(s) of interest.
 ################################################################################
 
 library(sf)
@@ -141,7 +142,6 @@ for (s in surveys) {
     st_as_sf(sf_column_name = 'geometry')
   
   # Save output shape file
-  # output_dir <- here("good_grid_cells")
   output_dir <- 'grid_cells_20070618_SB'
   output_path <- here(output_dir, glue("{s}_grid_cells.shp"))
   st_write(final_df, output_path, append = FALSE)
