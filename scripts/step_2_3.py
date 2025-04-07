@@ -16,9 +16,9 @@ if __name__ == '__main__':
     for d in dates:
 
         # make directory/filenames based on the survey date input by the user 
-        source_dir = os.path.join('data', d, 'original_data', 'npzs')
+        source_dir = os.path.join('data', d, 'raw', 'npzs')
         print(f'\nCreating PNG images from {source_dir}')
-        dest_dir = os.path.join('data', d, 'created_data', 'edge_pngs_n_pgws')
+        dest_dir = os.path.join('data', d, 'created', 'edge_pngs_n_pgws')
         print(f'Writing PNGs to {dest_dir}')
 
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         npz_to_png(source_dir=source_dir, dest_dir=dest_dir)
 
         # 2. Create a corresponding pgw file
-        jgw_source = os.path.join('data', d, 'original_data', 'jgws')
+        jgw_source = os.path.join('data', d, 'raw', 'jgws')
         print(f'\nWriting pgw files to {dest_dir}')
         make_edge_pgw(source_dir=jgw_source, dest_dir=dest_dir)
 
