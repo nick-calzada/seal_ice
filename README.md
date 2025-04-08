@@ -25,6 +25,7 @@ This pipeline uses both Python and R. Recommended setup:
    ```bash
    conda create -n ice_env python=3.11
    conda activate ice_env
+   conda install opencv==4.10.0 geotiff==1.7.3
    pip install -r requirements.txt
    ```
 
