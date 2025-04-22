@@ -48,6 +48,7 @@ seal_ice/
 │       │   ├── edge_pngs_n_pgws/          # PNG edge images and associated PGW world files
 │       │   ├── filled_tiffs/              # Flood-filled TIFFs of full iceberg areas
 │       │   ├── wgs84_tiffs_from_pngs/     # CRS-transformed TIFFs (e.g., EPSG:4326)
+│       │   ├── footprints/                # Image footprint shapefiles 
 │       │   └── valid_footprints.txt       # List of valid footprints used for analysis
 │       └── raw/
 │           ├── jgws/                      # Raw .jgw files
