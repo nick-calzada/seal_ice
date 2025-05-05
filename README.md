@@ -57,7 +57,7 @@ seal_ice/
 ├── scripts/
 │   ├── step_0_1_find_valid_fps_and_get_fp_ints.R
 │   ├── step_2_npz_to_png.py
-│   ├── step_2_3.py                        # Combines steps 2 and 3
+│   ├── step_2_3.py                        # Combines footprint intersections + npz to png
 │   ├── step_3_make_edge_pgw.py
 │   ├── step_4_convert_crs.py
 │   ├── step_5_fill_tiffs.py
@@ -65,7 +65,7 @@ seal_ice/
 │   ├── step_6_calc_ice_props.py
 │   └── step_7_8_skeletons_to_lattice_krig.R
 │
-├── grid_cells_20070618_SB/                # Grid cells based on June 18, 2007 survey boundary
+├── grid_cells_20070618_SB/                # Grid cells for specific survey date based on June 18, 2007 survey boundary
 │   ├── {survey_date}_grid_cells.shp
 │   ├── {survey_date}_grid_cells.dbf
 │   ├── {survey_date}_grid_cells.prj
@@ -111,6 +111,5 @@ Each step saves intermediate outputs that can be reused for validation or inspec
 - `.csv` summaries of ice coverage by image, date, and grid cell
 
 ## Notes
-- The pipeline assumes `.jgw` world files use **negative pixel width** and **positive pixel height**.
-- Use of visualizations can assist in validating outputs
+- Use of visualizations can assist in validating outputs!
 
