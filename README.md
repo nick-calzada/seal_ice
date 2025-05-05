@@ -103,12 +103,13 @@ Each step saves intermediate outputs that can be reused for validation or inspec
 - Aerial `.jpg` images
 - Corresponding `.jgw` world files (NAD 83 / Alaska Albers - EPSG:3338)
 - Grid cell shapefiles
-- Optional date-specific survey boundary shapefile
+- Optional: date-specific survey boundary shapefile
 
 ## Output
 - Binary `.tif` images with 0 (non-ice) and 255 (ice) values
 - Raster layers of ice proportions per grid cell
 - `.csv` summaries of ice coverage by image, date, and grid cell
+- Smoothened map of observed and estimated ice proportions
 
 ## Notes
 - Use of visualizations can assist in validating outputs!
