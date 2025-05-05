@@ -47,7 +47,7 @@ for (replicate_date in replicates) {
   # 1. Make the ice prop skeleton
   ###########################################################################
   
-  # If using each survey date's unique survey boundaru, use the commented code below
+  # If using each survey date's unique survey boundary, use the commented code below
   # Read in footprint shapes 
   # path <- here("harbor_seal_many_replicates", "footprints")
   # layer <- glue('JHI_{replicate_date}_footprint')
@@ -75,7 +75,7 @@ for (replicate_date in replicates) {
   file_name <- glue('final_ice_props_w_one_sb/ice_props_{replicate_date}.csv')
   ice <- read_csv(file_name) %>% dplyr::select(-...1, -geometry) %>% as.data.frame()
   
-  # Some EDA
+  # Some EDA...
   # any(is.na(ice$z)) # no NA observed z values
   # print(paste('min:', min(ice$z), 'max:', max(ice$z)))
   # hist(ice$z)
@@ -99,7 +99,7 @@ for (replicate_date in replicates) {
   df <- left_join(empty, min_maxed_ice, by = c("x", "y")) %>% dplyr::select(x, y, z) 
   anti <- anti_join(min_maxed_ice, empty, by = c('x', 'y')) # should be an empty dataframe
   
-  # Visualize observed ice proportions.
+  # Optional: visualize observed ice proportions:
   # ggplot() + 
   #   geom_tile(data = df, aes(x=x,y=y,fill=z)) + 
   #   coord_sf() +
