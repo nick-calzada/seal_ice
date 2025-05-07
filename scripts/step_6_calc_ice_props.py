@@ -20,23 +20,20 @@ def find_ice_props(filled_in_tiff_path, polygons):
             polygons = polygons.to_crs(src.crs)
         
         filled_iceberg = src.read(1)    
-        pixel_area = src.res[0] * src.res[1]
         ice_proportions = []
-
-        polygons.loc[:, 'python_area'] = polygons.geometry.area
         
         for idx, poly in enumerate(polygons.geometry[:]):
 
             # Logical mask denoting where the polygon and image align
             mask = geometry_mask([poly], transform=src.transform, invert=True, out_shape=src.shape)         
             
-            # Find the sum of where they overlap times pixel area                                                                                                                                   
-            ice_area = (filled_iceberg & mask).sum() * pixel_area
-            total_area = polygons.loc[idx, 'python_area']
-            proportion_ice = ice_area /  total_area
-            ice_proportions.append(proportion_ice)
+            # Find the proportion of white pixels in each grid cell
+            masked_pxls = filled_iceberg[mask]
+            ice_pxl_count = np.sum(masked_pxls == 255)
+            ice_proportion = ice_pxl_count / np.sum(mask)
+            ice_proportions.append(ice_proportion)
         
-        # save ice proportion values as new 'z' column and save the final df 
+        # Save ice proportion values as new 'z' column and save the final df 
         polygons.loc[:, 'z'] = ice_proportions
         final_df = polygons[['geometry', 'area', 'python_area', 'x', 'y', 'z']]
     
@@ -55,13 +52,10 @@ def find_ice_props_many_imgs(filled_in_tiff_paths, polygon_df):
     for i, filled_in_tiff in tqdm(enumerate(sorted(filled_in_tiff_paths_sub))):
         
         print(f'\n\nworking on {filled_in_tiff.split('/')[-1]} \n')
-        
-        # name structure of jpg images (unique key in the polygon df) = JHI_20070813_xxxx.JPG
-        name = filled_in_tiff.split('/')[-1].replace('filled_', '').replace('_iceberg_edges.tif', '.JPG')
-        
-        # polygon_subset = polygon_df[polygon_df['file_name'] == name]            
+    
+        # Name structure of jpg images (unique key in the polygon df) = JHI_20070813_xxxx.JPG
+        name = filled_in_tiff.split('/')[-1].replace('filled_', '').replace('_iceberg_edges.tif', '.JPG')        
         polygon_subset = polygon_df[polygon_df['file_name'] == name].reset_index(drop=True)
-
         img_iter = find_ice_props(filled_in_tiff_path=filled_in_tiff, polygons=polygon_subset)
         survey_data.append(img_iter)
         
