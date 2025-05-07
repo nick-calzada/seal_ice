@@ -5,7 +5,7 @@ This repository contains a pipeline for calculating the proportion of glacial ic
 
 ## Features
 - Converts `.jpg` aerial images and associated `.jgw` world files into georeferenced binary rasters
-- Transforms coordinate refernce systems of images (e.g., EPSG:3338 → EPSG:4326)
+- Transforms coordinate reference systems of images (e.g., EPSG:3338 → EPSG:4326)
 - Applies image processing techniques to fill in iceberg boundaries
 - Calculates the proportion of ice per grid cell 
 - Uses Lattice Kriging to estimate ice proportions at unobserved locations
