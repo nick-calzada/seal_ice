@@ -1,4 +1,4 @@
-setwd('~/seal')
+setwd('~/seal_ice')
 library(here)
 library(LatticeKrig)
 library(tidyverse)
